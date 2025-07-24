@@ -288,3 +288,61 @@ footer {
   border-radius: 10px;
   max-width: 250px;
 }
+
+.guide-page {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #fefefe;
+}
+
+.guide-page h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.guide-block {
+  background: #f4f9ff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 6px solid #005fa3;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.guide-block h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.guide-block p,
+.guide-block ul {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.guide-warning {
+  background: #fff3cd;
+  color: #856404;
+  border-left: 6px solid #ffa502;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+}
+
+.guide-warning h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.guide-warning ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.final-note {
+  background: #e0ffe4;
+  border-left-color: #28a745;
+}
