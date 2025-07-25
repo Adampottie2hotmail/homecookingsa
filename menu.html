@@ -643,58 +643,84 @@
         }
 
         function showNameAddressForm(orderLines, total) {
-            // Create overlay/modal div
             let modal = document.createElement('div');
             modal.id = "name-address-modal";
             modal.style = `
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
-            z-index: 10000;
-        `;
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+        z-index: 10000;
+    `;
 
             modal.innerHTML = `
-            <form id="name-address-form" style="
-                background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 450px;
-                box-sizing: border-box; font-family: Arial, sans-serif;
-            ">
-                <h2>Please enter your details</h2>
-                <label for="customer-name" style="display:block; margin-bottom: 8px;">
-                    Name:<br />
-                    <input type="text" id="customer-name" name="customerName" required style="width: 100%; padding: 8px;" />
-                </label>
-                <label for="customer-address" style="display:block; margin-bottom: 8px;">
-                    Address:<br />
-                    <textarea id="customer-address" name="customerAddress" rows="3" required style="width: 100%; padding: 8px;"></textarea>
-                </label>
-                <div style="margin-top: 12px;">
-                    <button type="submit" style="padding: 10px 20px; font-size: 1rem;">Submit Order</button>
-                    <button type="button" id="cancel-order" style="padding: 10px 20px; font-size: 1rem; margin-left: 10px;">Cancel</button>
-                </div>
-            </form>
-        `;
+        <form id="name-address-form" style="
+            background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 450px;
+            box-sizing: border-box; font-family: Arial, sans-serif;
+        ">
+            <h2>Please enter your details</h2>
+            <label for="customer-name">Name:<br />
+                <input type="text" id="customer-name" name="customerName" required style="width: 100%; padding: 8px;" />
+            </label>
+            <label for="customer-address" style="margin-top: 10px;">Address:<br />
+                <textarea id="customer-address" name="customerAddress" rows="3" required style="width: 100%; padding: 8px;"></textarea>
+            </label>
+            <label style="display:block; margin-top:12px;">
+                Would you like it delivered?<br />
+                <select id="delivery-option" style="width: 100%; padding: 8px;">
+                    <option value="none" selected>No</option>
+                    <option value="San Sereno|35">San Sereno - R35</option>
+                    <option value="Lonehill|0">Lonehill - R0</option>
+                </select>
+            </label>
+            <div id="final-total" style="margin-top: 12px; font-weight: bold;">
+                Total: R${total.toFixed(2)}
+            </div>
+            <div style="margin-top: 12px;">
+                <button type="submit" style="padding: 10px 20px;">Submit Order</button>
+                <button type="button" id="cancel-order" style="padding: 10px 20px; margin-left: 10px;">Cancel</button>
+            </div>
+        </form>
+    `;
 
             document.body.appendChild(modal);
 
-            modal.querySelector("#cancel-order").onclick = () => {
-                modal.remove();
-            };
+            const deliverySelect = modal.querySelector("#delivery-option");
+            const totalDisplay = modal.querySelector("#final-total");
+
+            let deliveryCost = 0;
+
+            deliverySelect.addEventListener("change", () => {
+                const value = deliverySelect.value;
+                deliveryCost = 0;
+                if (value !== "none") {
+                    deliveryCost = parseFloat(value.split("|")[1]);
+                }
+                totalDisplay.textContent = `Total: R${(total + deliveryCost).toFixed(2)}`;
+            });
+
+            modal.querySelector("#cancel-order").onclick = () => modal.remove();
 
             modal.querySelector("#name-address-form").onsubmit = (e) => {
                 e.preventDefault();
                 const name = modal.querySelector("#customer-name").value.trim();
                 const address = modal.querySelector("#customer-address").value.trim();
+                const deliveryText = deliverySelect.value !== "none" ? deliverySelect.options[deliverySelect.selectedIndex].text : "No Delivery";
 
                 let emailBody = "Order Details:%0D%0A";
                 emailBody += orderLines.join("%0D%0A");
-                emailBody += `%0D%0A%0D%0ATotal: R${total.toFixed(2)}%0D%0A%0D%0ACustomer Name: ${encodeURIComponent(name)}%0D%0ACustomer Address: ${encodeURIComponent(address)}%0D%0A`;
+
+                if (deliveryCost > 0) {
+                    emailBody += `%0D%0A${deliveryText} = R${deliveryCost.toFixed(2)}`;
+                }
+
+                emailBody += `%0D%0A%0D%0ATotal: R${(total + deliveryCost).toFixed(2)}%0D%0A%0D%0ACustomer Name: ${encodeURIComponent(name)}%0D%0ACustomer Address: ${encodeURIComponent(address)}%0D%0ADelivery Option: ${deliveryText}`;
 
                 const subject = encodeURIComponent("New Order from Home Cooking Website");
 
                 window.location.href = `mailto:info@homecookingsa.co.za?subject=${subject}&body=${emailBody}`;
-
                 modal.remove();
             };
         }
+
     </script>
 
 </body>
