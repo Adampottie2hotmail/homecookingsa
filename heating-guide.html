@@ -6,6 +6,25 @@
   <title>Heating Guide - Home Cooking</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .print-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px 0;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.print-button:hover {
+  background-color: #218838;
+}
+
+  </style>
 </head>
 <body>
   <header>
@@ -25,10 +44,10 @@
   </header>
 
   <main class="guide-page">
-  <button id="printBtn" class="print-button">Print this page</button>
+
 
     <h2>Heating Guide</h2>
-
+      <button id="printBtn" class="print-button">Print this page</button>
     <section class="guide-block">
       <p>If you work all day, take your meal out of the freezer and place it in the fridge in the morning. It will be thawed and ready by evening.</p>
       <p>If you're home and short on time, leave the meal on your kitchen counter for 2–3 hours to thaw at room temperature.</p>
