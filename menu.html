@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Menu - Home Cooking</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -17,7 +17,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="menu.html" class="active">Menu</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -26,408 +26,677 @@
         </nav>
     </header>
 
-    <main class="menu-page">
+    <!-- LOGIN SECTION: Visible initially -->
+    <section id="login-section">
+        <h2>Login</h2>
+        <form id="login-form" autocomplete="off">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" required />
+            <button type="submit">Login</button>
+        </form>
+        <p id="error-message"></p>
+    </section>
+
+    <main id="menu-content" class="hidden menu-page">
+
         <h2>Our Menu</h2>
-        <center><a href="Order_Form_MARCH_2024.xlsx">Download Order Form</a></center>
-        <h3>SOUPS - April to August</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Vegetable Soup</h3>
-                    <p>Rich beef and veggie blend</p><span>R32.00</span>
+        <center><a href="Order_Form_MARCH_2024.xlsx" class="button" download>Download Order Form</a></center>
+        <details>
+            <summary>
+                <h3>SOUPS - April to August</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Vegetable Soup</h3>
+                        <p>Rich beef and veggie blend</p><span>R32.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Butternut Soup</h3>
+                        <p>Creamy butternut with spice</p><span>R32.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Vegetable Soup</h3>
+                        <p>Chicken with garden vegetables</p><span>R32.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Thick Vegetable Soup</h3>
+                        <p>Hearty veggie soup</p><span>R32.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Butternut Soup</h3>
-                    <p>Creamy butternut with spice</p><span>R32.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Vegetable Soup</h3>
-                    <p>Chicken with garden vegetables</p><span>R32.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Thick Vegetable Soup</h3>
-                    <p>Hearty veggie soup</p><span>R32.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-        <h3>MAINS</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Mince Cottage Pie</h3>
-                    <p>Classic cottage pie with mince</p><span>R51.00</span>
+        <details>
+            <summary>
+                <h3>MAINS</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Mince Cottage Pie</h3>
+                        <p>Classic cottage pie with mince</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chilli Beef Mince Cottage Pie</h3>
+                        <p>Spicy twist on classic cottage pie</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Cottage Pie</h3>
+                        <p>Comfort pie with chicken filling</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Vegetable Cottage Pie</h3>
+                        <p>Vegetarian version of cottage pie</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Mince Lasagne</h3>
+                        <p>Layers of pasta with beef mince</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chilli Beef Mince Lasagne</h3>
+                        <p>Spicy beef lasagne</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Lasagne</h3>
+                        <p>Lasagne layered with chicken</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Vegetable Lasagne</h3>
+                        <p>Vegetarian lasagne</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Macaroni & Cheese</h3>
+                        <p>Cheesy pasta comfort dish</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Macaroni, Mince & Cheese</h3>
+                        <p>Mac & cheese with mince</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Macaroni, Chilli Mince & Cheese</h3>
+                        <p>Mac & cheese with a spicy kick</p><span>R51.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Mince Bobotie</h3>
+                        <p>Traditional Cape Malay spiced dish</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chilli Mince Bobotie</h3>
+                        <p>Bobotie with a spicy twist</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Lentil Bobotie</h3>
+                        <p>Vegetarian lentil-based bobotie</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Mince Moussaka</h3>
+                        <p>Layered dish with eggplant & mince</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Baby Marrow Moussaka</h3>
+                        <p>Vegetarian moussaka with marrow</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Mince Bolognaise</h3>
+                        <p>Classic pasta with beef bolognaise</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chilli Beef Mince Bolognaise</h3>
+                        <p>Spicy beef pasta</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Meatballs in Gravy</h3>
+                        <p>Juicy meatballs in savoury sauce</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Hake Fish in Cream Sauce</h3>
+                        <p>Creamy fish dish</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Hake Fish in Tomato Sauce</h3>
+                        <p>Tomato-based fish dish</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Curry</h3>
+                        <p>Traditional beef curry</p><span>R62.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Silverside & Mushroom Gravy</h3>
+                        <p>Roast beef in mushroom sauce</p><span>R62.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Stew</h3>
+                        <p>Slow-cooked traditional beef stew</p><span>R62.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Stroganoff</h3>
+                        <p>Creamy beef and mushroom dish</p><span>R62.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Spicy Moroccan Rump</h3>
+                        <p>Moroccan-spiced beef strips</p><span>R65.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Pork Fillets & Gravy</h3>
+                        <p>Grilled pork in gravy</p><span>R65.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Sweet and Sour Pork</h3>
+                        <p>Sticky pork with tangy sauce</p><span>R65.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chilli Beef Mince Cottage Pie</h3>
-                    <p>Spicy twist on classic cottage pie</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Cottage Pie</h3>
-                    <p>Comfort pie with chicken filling</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Vegetable Cottage Pie</h3>
-                    <p>Vegetarian version of cottage pie</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Mince Lasagne</h3>
-                    <p>Layers of pasta with beef mince</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chilli Beef Mince Lasagne</h3>
-                    <p>Spicy beef lasagne</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Lasagne</h3>
-                    <p>Lasagne layered with chicken</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Vegetable Lasagne</h3>
-                    <p>Vegetarian lasagne</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Macaroni & Cheese</h3>
-                    <p>Cheesy pasta comfort dish</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Macaroni, Mince & Cheese</h3>
-                    <p>Mac & cheese with mince</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Macaroni, Chilli Mince & Cheese</h3>
-                    <p>Mac & cheese with a spicy kick</p><span>R51.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Mince Bobotie</h3>
-                    <p>Traditional Cape Malay spiced dish</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chilli Mince Bobotie</h3>
-                    <p>Bobotie with a spicy twist</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Lentil Bobotie</h3>
-                    <p>Vegetarian lentil-based bobotie</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Mince Moussaka</h3>
-                    <p>Layered dish with eggplant & mince</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Baby Marrow Moussaka</h3>
-                    <p>Vegetarian moussaka with marrow</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Mince Bolognaise</h3>
-                    <p>Classic pasta with beef bolognaise</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chilli Beef Mince Bolognaise</h3>
-                    <p>Spicy beef pasta</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Meatballs in Gravy</h3>
-                    <p>Juicy meatballs in savoury sauce</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Hake Fish in Cream Sauce</h3>
-                    <p>Creamy fish dish</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Hake Fish in Tomato Sauce</h3>
-                    <p>Tomato-based fish dish</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Curry</h3>
-                    <p>Traditional beef curry</p><span>R62.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Silverside & Mushroom Gravy</h3>
-                    <p>Roast beef in mushroom sauce</p><span>R62.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Stew</h3>
-                    <p>Slow-cooked traditional beef stew</p><span>R62.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Stroganoff</h3>
-                    <p>Creamy beef and mushroom dish</p><span>R62.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Spicy Moroccan Rump</h3>
-                    <p>Moroccan-spiced beef strips</p><span>R65.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Pork Fillets & Gravy</h3>
-                    <p>Grilled pork in gravy</p><span>R65.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Sweet and Sour Pork</h3>
-                    <p>Sticky pork with tangy sauce</p><span>R65.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-        <h3>CURRY CHICKEN DISHES</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Curry</h3>
-                    <p>Spiced chicken curry</p><span>R57.00</span>
+        <details>
+            <summary>
+                <h3>CURRY CHICKEN DISHES</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Curry</h3>
+                        <p>Spiced chicken curry</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Green Thai Chicken Curry (Mild)</h3>
+                        <p>Mild green Thai curry</p><span>R65.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Korma Chicken</h3>
+                        <p>Fragrant korma-style chicken</p><span>R65.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Satay Chicken</h3>
+                        <p>Peanut-based curry dish</p><span>R65.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Green Thai Chicken Curry (Mild)</h3>
-                    <p>Mild green Thai curry</p><span>R65.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Korma Chicken</h3>
-                    <p>Fragrant korma-style chicken</p><span>R65.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Satay Chicken</h3>
-                    <p>Peanut-based curry dish</p><span>R65.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-        <h3>NON-CURRY CHICKEN DISHES</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken a la King</h3>
-                    <p>Creamy chicken in white sauce</p><span>R57.00</span>
+        <details>
+            <summary>
+                <h3>NON-CURRY CHICKEN DISHES</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken a la King</h3>
+                        <p>Creamy chicken in white sauce</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Chutney</h3>
+                        <p>Chicken in sweet chutney sauce</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken in BBQ Sauce</h3>
+                        <p>Sticky BBQ chicken</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken in Cream Sauce</h3>
+                        <p>Rich cream sauce over chicken</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Stroganoff</h3>
+                        <p>Creamy chicken with mushrooms</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken with Fresh Coriander</h3>
+                        <p>Chicken with herbed sauce</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken with Spinach</h3>
+                        <p>Chicken and creamy spinach</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Spinach and Cheddar Chicken</h3>
+                        <p>Baked chicken with cheese</p><span>R57.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Sweet Chilli Chicken</h3>
+                        <p>Chicken in sticky sweet chilli</p><span>R57.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Chutney</h3>
-                    <p>Chicken in sweet chutney sauce</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken in BBQ Sauce</h3>
-                    <p>Sticky BBQ chicken</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken in Cream Sauce</h3>
-                    <p>Rich cream sauce over chicken</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Stroganoff</h3>
-                    <p>Creamy chicken with mushrooms</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken with Fresh Coriander</h3>
-                    <p>Chicken with herbed sauce</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken with Spinach</h3>
-                    <p>Chicken and creamy spinach</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Spinach and Cheddar Chicken</h3>
-                    <p>Baked chicken with cheese</p><span>R57.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Sweet Chilli Chicken</h3>
-                    <p>Chicken in sticky sweet chilli</p><span>R57.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-        <h3>*SPECIAL MEALS*</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Beef Fillet & Mushrooms</h3>
-                    <p>Premium beef fillet with mushroom sauce</p><span>R86.00</span>
+        <details>
+            <summary>
+                <h3>*SPECIAL MEALS*</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Beef Fillet & Mushrooms</h3>
+                        <p>Premium beef fillet with mushroom sauce</p><span>R86.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Lamb Stew</h3>
+                        <p>Slow-cooked lamb stew</p><span>R86.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Roast Lamb in Mint Gravy</h3>
+                        <p>Roast lamb in minty sauce</p><span>R86.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Oxtail & Butterbeans</h3>
+                        <p>Classic oxtail with beans</p><span>R93.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Chicken Pie (for 2 people)</h3>
+                        <p>Family-sized chicken pie</p><span>R78.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Lamb Stew</h3>
-                    <p>Slow-cooked lamb stew</p><span>R86.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Roast Lamb in Mint Gravy</h3>
-                    <p>Roast lamb in minty sauce</p><span>R86.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Oxtail & Butterbeans</h3>
-                    <p>Classic oxtail with beans</p><span>R93.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Chicken Pie (for 2 people)</h3>
-                    <p>Family-sized chicken pie</p><span>R78.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-        <h3>EXTRAS</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Extra Portion STARCH</h3>
-                    <p>Add-on portion of starch</p><span>R12.50</span>
+        <details>
+            <summary>
+                <h3>EXTRAS</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Extra Portion STARCH</h3>
+                        <p>Add-on portion of starch</p><span>R12.50</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Mashed Potato</h3>
+                        <p>Creamy mashed potato</p><span>R14.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Potato Bake</h3>
+                        <p>Baked creamy potatoes</p><span>R19.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Butternut</h3>
+                        <p>Sweet roasted butternut</p><span>R19.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Green Beans, Potato & Onion</h3>
+                        <p>Mixed vegetable trio</p><span>R19.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Green Beans, Red Peppers & Onion</h3>
+                        <p>Veg mix with peppers</p><span>R19.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Spinach, Potato and Onion</h3>
+                        <p>Creamy spinach and veg</p><span>R19.00</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Sweet Potato</h3>
+                        <p>Roasted sweet potato</p><span>R19.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Mashed Potato</h3>
-                    <p>Creamy mashed potato</p><span>R14.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Potato Bake</h3>
-                    <p>Baked creamy potatoes</p><span>R19.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Butternut</h3>
-                    <p>Sweet roasted butternut</p><span>R19.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Green Beans, Potato & Onion</h3>
-                    <p>Mixed vegetable trio</p><span>R19.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Green Beans, Red Peppers & Onion</h3>
-                    <p>Veg mix with peppers</p><span>R19.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Spinach, Potato and Onion</h3>
-                    <p>Creamy spinach and veg</p><span>R19.00</span>
-                </div>
-            </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Sweet Potato</h3>
-                    <p>Roasted sweet potato</p><span>R19.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-        <h3>CAKES and DESSERTS</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Assorted Cupcakes</h3>
-                    <p>Sold in 4s / 6s / 8s – price per each</p><span>Varies</span>
+        <details>
+            <summary>
+                <h3>CAKES and DESSERTS</h3>
+            </summary>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Assorted Cupcakes</h3>
+                        <p>Sold in 4s / 6s / 8s – price per each</p><span>Varies</span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-details">
+                        <h3>Baked Puddings in Season</h3>
+                        <p>Traditional puddings – seasonal</p><span>R22.00</span>
+                    </div>
                 </div>
             </div>
-            <div class="menu-item">
-                <div class="item-details">
-                    <h3>Baked Puddings in Season</h3>
-                    <p>Traditional puddings – seasonal</p><span>R22.00</span>
-                </div>
-            </div>
-        </div>
+        </details>
 
-
+        <!-- Checkout Button container -->
+        <div id="checkout-container" style="margin-top:20px; text-align:center; display:none;">
+            <button id="checkout-btn" style="font-size:1.2em; padding:10px 20px;">Checkout</button>
         </div>
     </main>
 
     <footer>
         <p>&copy; 2025 Home Cooking. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="about.html">About Us</a> |
-            <a href="contact.html">Contact Us</a>
-        </div>
     </footer>
+
+    <script>
+        let users = {};
+
+        // Fetch users from the JSON file
+        fetch('users.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load users.json');
+                }
+                return response.json();
+            })
+            .then(data => {
+                users = data;
+                setupLoginForm();
+            })
+            .catch(error => {
+                console.error('Error loading users:', error);
+                // Optionally fallback to hardcoded users here
+                users = {
+                    admin: "1234"
+                };
+                setupLoginForm();
+            });
+
+        function setupLoginForm() {
+            document.getElementById("login-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const user = document.getElementById("username").value.trim();
+                const pass = document.getElementById("password").value.trim();
+                const error = document.getElementById("error-message");
+
+                if (users[user] && users[user] === pass) {
+                    error.textContent = "";
+                    document.getElementById("login-section").classList.add("hidden");
+                    document.getElementById("menu-content").classList.remove("hidden");
+                    setupOrderingUI();
+                } else {
+                    error.textContent = "Invalid username or password.";
+                }
+            });
+        }
+
+        document.getElementById("login-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const user = document.getElementById("username").value.trim();
+            const pass = document.getElementById("password").value.trim();
+            const error = document.getElementById("error-message");
+
+            if (users[user] && users[user] === pass) {
+                // Successful login
+                error.textContent = "";
+                document.getElementById("login-section").classList.add("hidden");
+                document.getElementById("menu-content").classList.remove("hidden");
+                setupOrderingUI(); // call our new function to add ordering controls
+            } else {
+                error.textContent = "Invalid username or password.";
+            }
+        });
+
+        document.querySelectorAll('details').forEach((detail) => {
+            detail.addEventListener('toggle', () => {
+                if (detail.open) { // If this detail just opened
+                    // Close all other details
+                    document.querySelectorAll('details').forEach((otherDetail) => {
+                        if (otherDetail !== detail) {
+                            otherDetail.open = false;
+                        }
+                    });
+                }
+            });
+        });
+        document.querySelectorAll('details summary').forEach((summary) => {
+            summary.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent the click from bubbling up
+            });
+        });
+
+        function setupOrderingUI() {
+            const menuItems = document.querySelectorAll("#menu-content .menu-item");
+            menuItems.forEach((item, index) => {
+                const detailsDiv = item.querySelector(".item-details");
+                const itemName = detailsDiv.querySelector("h3").textContent.trim();
+                const priceText = detailsDiv.querySelector("span").textContent.trim();
+                // Ignore items with "Varies" price
+                if (priceText.toLowerCase() === "varies") return;
+                const price = parseFloat(priceText.replace("R", "").replace(",", "."));
+
+                // Create checkbox and quantity input if not already created
+                if (!item.querySelector(".order-controls")) {
+                    const orderControls = document.createElement("div");
+                    orderControls.className = "order-controls";
+                    orderControls.style.marginTop = "8px";
+
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.id = `select-item-${index}`;
+                    checkbox.style.marginRight = "6px";
+
+                    const qtyLabel = document.createElement("label");
+                    qtyLabel.htmlFor = `qty-item-${index}`;
+                    qtyLabel.textContent = "Qty:";
+                    qtyLabel.style.marginLeft = "10px";
+                    qtyLabel.style.marginRight = "4px";
+
+                    const qtyInput = document.createElement("input");
+                    qtyInput.type = "number";
+                    qtyInput.min = "1";
+                    qtyInput.value = "1";
+                    qtyInput.id = `qty-item-${index}`;
+                    qtyInput.style.width = "50px";
+
+                    orderControls.appendChild(checkbox);
+                    orderControls.appendChild(document.createTextNode(itemName));
+                    orderControls.appendChild(qtyLabel);
+                    orderControls.appendChild(qtyInput);
+
+                    detailsDiv.appendChild(orderControls);
+                }
+            });
+
+            // Show checkout container or create if missing
+            let checkoutContainer = document.getElementById("checkout-container");
+            if (!checkoutContainer) {
+                checkoutContainer = document.createElement("div");
+                checkoutContainer.id = "checkout-container";
+                checkoutContainer.style.marginTop = "20px";
+                document.getElementById("menu-content").appendChild(checkoutContainer);
+            }
+            checkoutContainer.style.display = "block";
+
+            // Add checkout button if not present
+            let checkoutBtn = document.getElementById("checkout-btn");
+            if (!checkoutBtn) {
+                checkoutBtn = document.createElement("button");
+                checkoutBtn.id = "checkout-btn";
+                checkoutBtn.textContent = "Checkout";
+                checkoutBtn.style.padding = "10px 20px";
+                checkoutBtn.style.fontSize = "1rem";
+                checkoutContainer.appendChild(checkoutBtn);
+            }
+
+            checkoutBtn.onclick = () => {
+                let orderLines = [];
+                let total = 0;
+
+                menuItems.forEach((item, index) => {
+                    const orderControls = item.querySelector(".order-controls");
+                    if (!orderControls) return;
+                    const checkbox = orderControls.querySelector(`input[type="checkbox"]`);
+                    const qtyInput = orderControls.querySelector(`input[type="number"]`);
+                    if (checkbox.checked) {
+                        const name = orderControls.childNodes[1].textContent;
+                        const qty = parseInt(qtyInput.value);
+                        if (qty > 0) {
+                            const priceText = item.querySelector(".item-details span").textContent.trim();
+                            const price = parseFloat(priceText.replace("R", "").replace(",", "."));
+                            const lineTotal = price * qty;
+                            total += lineTotal;
+                            orderLines.push(`${name} x${qty} @ R${price.toFixed(2)} each = R${lineTotal.toFixed(2)}`);
+                        }
+                    }
+                });
+
+                if (orderLines.length === 0) {
+                    alert("Please select at least one item and specify quantity.");
+                    return;
+                }
+
+                // Show name/address form modal
+                showNameAddressForm(orderLines, total);
+            };
+        }
+
+        function showNameAddressForm(orderLines, total) {
+            // Create overlay/modal div
+            let modal = document.createElement('div');
+            modal.id = "name-address-modal";
+            modal.style = `
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+            z-index: 10000;
+        `;
+
+            modal.innerHTML = `
+            <form id="name-address-form" style="
+                background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 450px;
+                box-sizing: border-box; font-family: Arial, sans-serif;
+            ">
+                <h2>Please enter your details</h2>
+                <label for="customer-name" style="display:block; margin-bottom: 8px;">
+                    Name:<br />
+                    <input type="text" id="customer-name" name="customerName" required style="width: 100%; padding: 8px;" />
+                </label>
+                <label for="customer-address" style="display:block; margin-bottom: 8px;">
+                    Address:<br />
+                    <textarea id="customer-address" name="customerAddress" rows="3" required style="width: 100%; padding: 8px;"></textarea>
+                </label>
+                <div style="margin-top: 12px;">
+                    <button type="submit" style="padding: 10px 20px; font-size: 1rem;">Submit Order</button>
+                    <button type="button" id="cancel-order" style="padding: 10px 20px; font-size: 1rem; margin-left: 10px;">Cancel</button>
+                </div>
+            </form>
+        `;
+
+            document.body.appendChild(modal);
+
+            modal.querySelector("#cancel-order").onclick = () => {
+                modal.remove();
+            };
+
+            modal.querySelector("#name-address-form").onsubmit = (e) => {
+                e.preventDefault();
+                const name = modal.querySelector("#customer-name").value.trim();
+                const address = modal.querySelector("#customer-address").value.trim();
+
+                let emailBody = "Order Details:%0D%0A";
+                emailBody += orderLines.join("%0D%0A");
+                emailBody += `%0D%0A%0D%0ATotal: R${total.toFixed(2)}%0D%0A%0D%0ACustomer Name: ${encodeURIComponent(name)}%0D%0ACustomer Address: ${encodeURIComponent(address)}%0D%0A`;
+
+                const subject = encodeURIComponent("New Order from Home Cooking Website");
+
+                window.location.href = `mailto:info@homecookingsa.co.za?subject=${subject}&body=${emailBody}`;
+
+                modal.remove();
+            };
+        }
+    </script>
+
 </body>
 
 </html>
