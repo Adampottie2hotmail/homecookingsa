@@ -25,6 +25,8 @@
   </header>
 
   <main class="guide-page">
+  <button id="printBtn" class="print-button">Print this page</button>
+
     <h2>Heating Guide</h2>
 
     <section class="guide-block">
@@ -75,5 +77,11 @@
       <a href="contact.html">Contact Us</a>
     </div>
   </footer>
+  <script>
+  document.getElementById('printBtn').addEventListener('click', () => {
+    window.print();
+  });
+</script>
+
 </body>
 </html>
