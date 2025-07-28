@@ -49,7 +49,7 @@
     <main id="menu-content" class="hidden menu-page">
 
         <h2>Our Menu</h2>
-        <center><a href="Order_Form_MARCH_2024.xlsx" class="button" download>Download Order Form</a></center>
+        <a href="Order_Form_MARCH_2024.xlsx" class="button" download>Download Order Form</a>
         <details>
             <summary>
                 <h3>SOUPS - April to August</h3>
@@ -546,9 +546,7 @@
         // Fetch users from the JSON file
         fetch('users.json')
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to load users.json');
-                }
+                if (!response.ok) throw new Error('Failed to load users.json');
                 return response.json();
             })
             .then(data => {
@@ -557,10 +555,7 @@
             })
             .catch(error => {
                 console.error('Error loading users:', error);
-                // Optionally fallback to hardcoded users here
-                users = {
-                    admin: "1234"
-                };
+                users = { admin: "1234" }; // fallback
                 setupLoginForm();
             });
 
@@ -583,64 +578,165 @@
         }
 
         document.querySelectorAll('details summary').forEach((summary) => {
-            summary.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent the click from bubbling up
-            });
+            summary.addEventListener('click', (e) => e.stopPropagation());
         });
 
         function setupOrderingUI() {
             const menuItems = document.querySelectorAll("#menu-content .menu-item");
+
             menuItems.forEach((item, index) => {
+                // Make the whole card a flex column with fixed height
+                item.style.display = "flex";
+                item.style.flexDirection = "column";
+                item.style.height = "auto";  // adjust this height as needed
+                item.style.cursor = "pointer";
+                item.style.transition = "background-color 0.3s ease";
+                item.dataset.selected = "false";
+                item.style.backgroundColor = "white";
+
                 const detailsDiv = item.querySelector(".item-details");
                 const priceText = detailsDiv.querySelector("span").textContent.trim();
                 if (priceText.toLowerCase() === "varies") return;
+
+                // Make detailsDiv fill available space above controls
+                detailsDiv.style.flexGrow = "1";
+                detailsDiv.style.display = "flex";
+                detailsDiv.style.flexDirection = "column";
+                detailsDiv.style.justifyContent = "flex-start";
+
                 const price = parseFloat(priceText.replace("R", "").replace(",", "."));
 
                 if (!item.querySelector(".order-controls")) {
                     const orderControls = document.createElement("div");
                     orderControls.className = "order-controls";
-                    orderControls.style.marginTop = "8px";
+                    orderControls.style.marginTop = "auto";  // push to bottom
+                    orderControls.style.display = "flex";
+                    orderControls.style.alignItems = "center";
+                    orderControls.style.gap = "10px";
 
-                    // No checkbox, just qty label and input
-                    const qtyLabel = document.createElement("label");
-                    qtyLabel.htmlFor = `qty-item-${index}`;
+                    const qtyLabel = document.createElement("span");
                     qtyLabel.textContent = "Qty:";
-                    qtyLabel.style.marginRight = "4px";
+                    qtyLabel.style.fontWeight = "500";
 
                     const qtyInput = document.createElement("input");
                     qtyInput.type = "number";
-                    qtyInput.min = "1";
-                    qtyInput.value = "1";
+                    qtyInput.min = "0";
+                    qtyInput.value = "0";
+                    qtyInput.readOnly = true;
                     qtyInput.id = `qty-item-${index}`;
                     qtyInput.style.width = "50px";
+                    qtyInput.style.textAlign = "center";
+                    qtyInput.style.padding = "5px";
+                    qtyInput.style.border = "1px solid #ccc";
+                    qtyInput.style.borderRadius = "6px";
+                    qtyInput.style.backgroundColor = "#f9f9f9";
+
+                    const addBtn = document.createElement("button");
+                    addBtn.textContent = "+";
+                    addBtn.type = "button";
+                    styleModernButton(addBtn, "#4CAF50", "small");
+
+                    const minusBtn = document.createElement("button");
+                    minusBtn.textContent = "–";
+                    minusBtn.type = "button";
+                    styleModernButton(minusBtn, "#4CAF50", "small");
+
+                    const resetBtn = document.createElement("button");
+                    resetBtn.textContent = "❌";
+                    resetBtn.type = "button";
+                    resetBtn.title = "Reset";
+                    styleModernButton(resetBtn, "#a8d5a2");
+                    resetBtn.style.color = "black";
+                    resetBtn.style.display = "none"; // Hide initially
 
                     orderControls.appendChild(qtyLabel);
+                    orderControls.appendChild(minusBtn);
                     orderControls.appendChild(qtyInput);
-
+                    orderControls.appendChild(addBtn);
+                    orderControls.appendChild(resetBtn);
                     detailsDiv.appendChild(orderControls);
-                }
 
-                // Initialize background color based on selected state
-                item.style.cursor = "pointer";
-                item.dataset.selected = "false";  // custom attribute to track selection
-                item.style.backgroundColor = "white";
+                    // Button Logic
+                    addBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        let currentQty = parseInt(qtyInput.value);
+                        currentQty += 1;
+                        qtyInput.value = currentQty;
+                        item.dataset.selected = "true";
+                        item.style.backgroundColor = "#a8d5a2";
 
-                // Click toggles selection
-                item.addEventListener("click", (e) => {
-                    // Ignore clicks on quantity input inside the card so user can change qty
-                    if (e.target.tagName === "INPUT" || e.target.tagName === "LABEL") return;
+                        // Show reset button if qty > 0
+                        if (currentQty > 0) {
+                            resetBtn.style.display = "inline-block";
+                        }
+                    });
 
-                    if (item.dataset.selected === "true") {
+                    minusBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        let currentQty = parseInt(qtyInput.value);
+                        if (currentQty > 1) {
+                            qtyInput.value = currentQty - 1;
+                            resetBtn.style.display = "inline-block";
+                        } else {
+                            qtyInput.value = "0";
+                            item.dataset.selected = "false";
+                            item.style.backgroundColor = "white";
+
+                            // Hide reset button if qty = 0
+                            resetBtn.style.display = "none";
+                        }
+                    });
+
+                    resetBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        qtyInput.value = "0";
                         item.dataset.selected = "false";
                         item.style.backgroundColor = "white";
-                    } else {
-                        item.dataset.selected = "true";
-                        item.style.backgroundColor = "#4CAF50"; // green highlight
-                    }
-                });
+
+                        // Hide reset button on reset
+                        resetBtn.style.display = "none";
+                    });
+                }
             });
 
-            // checkout container and button setup (same as before)
+            // Reusable styling function for buttons, with optional smaller size
+            function styleModernButton(button, bgColor, size = "normal") {
+                let padding = "6px 12px";
+                let fontSize = "16px";
+                if (size === "small") {
+                    padding = "3px 8px";
+                    fontSize = "14px";
+                }
+                button.style.cssText = `
+                background-color: ${bgColor};
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: ${padding};
+                font-size: ${fontSize};
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                user-select: none;
+            `;
+                button.addEventListener("mouseover", () => {
+                    button.style.backgroundColor = shadeColor(bgColor, -10);
+                });
+                button.addEventListener("mouseleave", () => {
+                    button.style.backgroundColor = bgColor;
+                });
+            }
+
+            // Darken color utility
+            function shadeColor(color, percent) {
+                const f = parseInt(color.slice(1), 16),
+                    t = percent < 0 ? 0 : 255,
+                    p = percent < 0 ? percent * -1 : percent,
+                    R = f >> 16,
+                    G = (f >> 8) & 0x00FF,
+                    B = f & 0x0000FF;
+                return `rgb(${Math.round((t - R) * p + R)}, ${Math.round((t - G) * p + G)}, ${Math.round((t - B) * p + B)})`;
+            }
+
             let checkoutContainer = document.getElementById("checkout-container");
             if (!checkoutContainer) {
                 checkoutContainer = document.createElement("div");
@@ -664,11 +760,11 @@
                 let orderLines = [];
                 let total = 0;
 
+                const menuItems = document.querySelectorAll("#menu-content .menu-item");
+
                 menuItems.forEach((item) => {
                     if (item.dataset.selected === "true") {
-                        const orderControls = item.querySelector(".order-controls");
-                        if (!orderControls) return;
-                        const qtyInput = orderControls.querySelector(`input[type="number"]`);
+                        const qtyInput = item.querySelector("input[type='number']");
                         const qty = parseInt(qtyInput.value);
                         if (qty > 0) {
                             const name = item.querySelector(".item-details h3").textContent.trim();
@@ -689,7 +785,6 @@
                 showNameAddressForm(orderLines, total);
             };
         }
-
 
         function showNameAddressForm(orderLines, total) {
             let modal = document.createElement('div');
@@ -737,7 +832,6 @@
 
             const deliverySelect = modal.querySelector("#delivery-option");
             const totalDisplay = modal.querySelector("#final-total");
-
             let deliveryCost = 0;
 
             deliverySelect.addEventListener("change", () => {
@@ -756,7 +850,9 @@
                 const name = modal.querySelector("#customer-name").value.trim();
                 const phone = modal.querySelector("#customer-phone").value.trim();
                 const address = modal.querySelector("#customer-address").value.trim();
-                const deliveryText = deliverySelect.value !== "none" ? deliverySelect.options[deliverySelect.selectedIndex].text : "No Delivery";
+                const deliveryText = deliverySelect.value !== "none"
+                    ? deliverySelect.options[deliverySelect.selectedIndex].text
+                    : "No Delivery";
 
                 let emailBody = "Order Details:%0D%0A";
                 emailBody += orderLines.join("%0D%0A");
@@ -777,24 +873,7 @@
         document.getElementById("menu-toggle").addEventListener("click", function () {
             document.getElementById("navbar").classList.toggle("active");
         });
-
-        function toggleSelect(card) {
-            card.classList.toggle('selected');
-            const checkbox = card.querySelector('input[type="checkbox"]');
-            if (checkbox) checkbox.checked = !checkbox.checked;
-        }
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', function (e) {
-                if (e.target.tagName !== 'INPUT') { // Ignore clicks on checkboxes
-                    toggleSelect(this);
-                }
-            });
-        });
     </script>
 
-
-
-
 </body>
-
 </html>
